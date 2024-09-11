@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:31:52 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/10 19:39:29 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/10 20:42:59 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,14 @@ Account& Account::operator=( Account const &other )
 
 // Getters ====================================================================
 int Account::getId( void ) const { return this->id; }
-int Account::getValue( void ) const { return this->value; }
+
+double Account::getValue( void ) const { return this->value; }
 
 
 // Setters ====================================================================
 void Account::setId(int newId) { this->id = newId; }
-void Account::setValue(int newValue)
+
+void Account::setValue(double newValue)
 {
 	if (newValue > 0)
 		this->value += newValue;
@@ -49,7 +51,8 @@ void Account::setValue(int newValue)
 
 std::ostream& operator<<(std::ostream& p_os, const Account& p_account)
 {
-	p_os << "[" << p_account.id << "] - [" << p_account.value << "]";
+	if (p_account.id > 0)
+		p_os << "[" << p_account.id << "] - [" << p_account.value << "]";
 	return (p_os);
 }
 

@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:32:05 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/10 20:17:55 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/10 20:45:28 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,30 @@ Bank& Bank::operator=( Bank const &other )
 }
 
 // Getters ====================================================================
-int Bank::getLiquidity( void ) const { return this->liquidity; }
+double Bank::getLiquidity( void ) const { return this->liquidity; }
 
 Account* Bank::getAccount(int id)
 {
-	for (std::vector<Account*>::iterator it = clientAccounts.begin(); it != clientAccounts.end(); ++it)
+	for (std::vector<Account*>::iterator it = clientAccounts.begin();
+		it != clientAccounts.end(); ++it)
 	{
 		if ((**it).getId() == id) {
 			return *it;
 		}
 	}
-	return NULL;
+	std::cerr << "Account " << id << " not found!" << std::endl;
+	return new Account();
 }
 
+
+
 // Setters ====================================================================
-void Bank::setLiquidity(int newLiquidity)
+void Bank::setLiquidity(double newLiquidity)
 {
 	if (newLiquidity > 0)
 		this->liquidity += newLiquidity;
 	else
 		this->liquidity -= newLiquidity;
-
 }
 
 // Methods ====================================================================
@@ -80,14 +83,17 @@ void Bank::openAccount(int newValue)
 
 void Bank::closeAccount(int id)
 {
-	for (std::vector<Account*>::iterator it = clientAccounts.begin(); it != clientAccounts.end(); ++it)
+	for (std::vector<Account*>::iterator it = clientAccounts.begin();
+		it != clientAccounts.end(); ++it)
 	{
 		if ((**it).getId() == id) {
 			delete *it;
 			clientAccounts.erase(it);
+			std::cout << "Account " << id << " closed!" << std::endl;
 			return ;
 		}
 	}
+	std::cerr << "Account " << id << " not found!" << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& p_os, const Bank& p_bank)

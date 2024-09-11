@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:31:15 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/10 20:16:41 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/10 20:45:17 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ const std::string GRAY = "\033[37;1m";
 class Bank
 {
 	private:
-		int						liquidity;
+		double						liquidity;
 		std::vector<Account *>	clientAccounts;
 
 	public:
@@ -46,11 +46,12 @@ class Bank
 		Bank&	operator=( Bank const &other );
 
 	// Getters ================================================================
-		int			getLiquidity( void ) const;
+		double		getLiquidity( void ) const;
 		Account*	getAccount(int id);
+		void		getLoan(double value, int id);
 
 	// Setters ================================================================
-		void		setLiquidity(int newLiquidity);
+		void		setLiquidity(double newLiquidity);
 
 	// Methods ================================================================
 		void		openAccount(int newValue);

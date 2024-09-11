@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:30:30 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/10 19:38:55 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/10 20:31:14 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Account
 {
 	private:
 		int	id;
-		int	value;
+		double	value;
 
 	public:
 	// Constructor & Destructor ===============================================
@@ -35,11 +35,11 @@ class Account
 
 	// Getters ================================================================
 		int			getId( void ) const;
-		int			getValue( void ) const;
+		double		getValue( void ) const;
 
 	// Setters ================================================================
 		void		setId(int newId);
-		void		setValue(int newValue);
+		void		setValue(double newValue);
 
 	// Methods ================================================================
 		friend std::ostream& operator<<
