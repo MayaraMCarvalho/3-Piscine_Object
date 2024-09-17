@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:32:05 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/17 16:41:00 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/17 20:37:24 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ Bank& Bank::operator=( Bank const &other )
 // Getters ====================================================================
 double Bank::getLiquidity( void ) const { return this->_liquidity; }
 
-Account* Bank::getAccount(int id)
+Account* Bank::getAccount(int id) const
 {
-	for (std::vector<Account*>::iterator it = _clientAccounts.begin();
+	for (std::vector<Account*>::const_iterator it = _clientAccounts.begin();
 		it != _clientAccounts.end(); ++it)
 	{
 		if ((**it).getId() == id) {
@@ -41,25 +41,6 @@ Account* Bank::getAccount(int id)
 	}
 	std::cerr << RED << "Account " << id << " not found!" << RESET << std::endl;
 	return new Account();
-}
-
-void Bank::getLoan(int id, double value)
-{
-	if (value < 0)
-		std::cerr << RED << "Can't loan negative values!" << RESET << std::endl;
-	else if (value > this->_liquidity)
-		std::cerr << RED << "Your loan request was denied!" << RESET << std::endl;
-	else
-	{
-		Account *account = getAccount(id);
-		if (account->getId() != -1)
-		{
-			account->_value += value;
-			this->_liquidity -= value;
-			std::cout << GREEN << "Loan granted successfully!";
-			std::cout << RESET << std::endl;
-		}
-	}
 }
 
 // Setters ====================================================================
@@ -106,6 +87,25 @@ void Bank::closeAccount(int id)
 		}
 	}
 	std::cerr << RED << "Account " << id << " not found!" << RESET << std::endl;
+}
+
+void Bank::giveLoan(int id, double value)
+{
+	if (value < 0)
+		std::cerr << RED << "Can't loan negative values!" << RESET << std::endl;
+	else if (value > this->_liquidity)
+		std::cerr << RED << "Your loan request was denied!" << RESET << std::endl;
+	else
+	{
+		Account *account = getAccount(id);
+		if (account->getId() != -1)
+		{
+			account->_value += value;
+			this->_liquidity -= value;
+			std::cout << GREEN << "Loan granted successfully!";
+			std::cout << RESET << std::endl;
+		}
+	}
 }
 
 std::ostream& operator<<(std::ostream& p_os, const Bank& p_bank)
