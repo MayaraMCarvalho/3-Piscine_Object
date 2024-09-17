@@ -1,45 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   *.cpp                                              :+:      :+:    :+:   */
+/*   Vector2.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:55 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/17 16:51:58 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/17 17:56:30 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Class.hpp"
+#include "Vector2.hpp"
 
 // Constructor & Destructor ===================================================
-Class::Class( void )
-{
-	std::cout << "Default constructor called" << std::endl;
-}
+Vector2::Vector2( void ) : x(0.0f), y(0.0f) {}
 
-Class::Class( Class const &copy )
-{
-	*this = copy;
-	std::cout << "Copy constructor called" << std::endl;
-}
+Vector2::Vector2(float x, float y) : x(x), y(y) {}
 
-Class::~Class( void )
-{
-	std::cout << "Destructor called" << std::endl;
-}
+Vector2::Vector2( Vector2 const &copy ) { *this = copy; }
+
+Vector2::~Vector2( void ) {}
 
 // Operators ==================================================================
-Class& Class::operator=( Class const &other )
+Vector2& Vector2::operator=( Vector2 const &other )
 {
 	if (this != &other)
 	{
+		this->x = other.x;
+		this->y = other.y;
 	}
-	std::cout << "Copy assignment operator called" << std::endl;
 	return *this;
 }
 
 // Getters ====================================================================
+float Vector2::getX() const { return x; }
+
+float Vector2::getY() const { return y; }
 
 // Setters ====================================================================
 

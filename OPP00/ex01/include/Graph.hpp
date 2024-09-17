@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   *.hpp                                              :+:      :+:    :+:   */
+/*   Graph.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:42 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/17 16:51:45 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/17 19:43:01 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLASS_HPP
-# define CLASS_HPP
+#ifndef GRAPH_HPP
+# define GRAPH_HPP
 
 # include <iostream>
+# include <vector>
+# include <limits>
+
+# include "Vector2.hpp"
 
 // Color codes as global variables
 const std::string RESET = "\033[0m";
@@ -25,28 +29,37 @@ const std::string PURPLE = "\033[35;1m";
 const std::string CYAN = "\033[36;1m";
 const std::string GRAY = "\033[37;1m";
 
-class Class
+// Bold Colors
+const std::string BRED = "\033[1;31m";
+const std::string BGREEN = "\033[1;32m";
+const std::string BYELLOW = "\033[1;33m";
+const std::string BBLUE = "\033[1;34m";
+const std::string BPURPLE = "\033[1;35m";
+const std::string BCYAN = "\033[1;36m";
+const std::string BWHITE = "\033[1;37m";
+
+class Graph
 {
 	private:
+		Vector2					size;
+		std::vector<Vector2>	list;
 
 	public:
 	// Constructor & Destructor ===============================================
-		Class( void );
-		~Class( void );
-	// Exceptions =============================================================
+		Graph(Vector2 vec);
+		~Graph( void );
 
 	// ========================================================================
-		Class( Class const &copy );
+		Graph( Graph const &copy );
 
 	// Operators ==============================================================
-		Class& operator=( Class const &other );
-
-	// Getters ================================================================
+		Graph& operator=( Graph const &other );
 
 	// Setters ================================================================
+		void	addPoint(float x, float y);
 
 	// Methods ================================================================
-
+		void	printGraph( void );
 };
 
 #endif
