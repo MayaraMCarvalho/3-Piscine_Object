@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:31:15 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/10 20:45:17 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:28:38 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,11 @@
 
 # include "Account.hpp"
 
-// Color codes as global variables
-const std::string RESET = "\033[0m";
-const std::string RED = "\033[31;1m";
-const std::string GREEN = "\033[32;1m";
-const std::string YELLOW = "\033[33;1m";
-const std::string BLUE = "\033[34;1m";
-const std::string PURPLE = "\033[35;1m";
-const std::string CYAN = "\033[36;1m";
-const std::string GRAY = "\033[37;1m";
-
 class Bank
 {
 	private:
-		double						liquidity;
-		std::vector<Account *>	clientAccounts;
+		double					_liquidity;
+		std::vector<Account *>	_clientAccounts;
 
 	public:
 	// Constructor & Destructor ===============================================
@@ -48,13 +38,13 @@ class Bank
 	// Getters ================================================================
 		double		getLiquidity( void ) const;
 		Account*	getAccount(int id);
-		void		getLoan(double value, int id);
+		void		getLoan(int id, double value);
 
 	// Setters ================================================================
 		void		setLiquidity(double newLiquidity);
 
 	// Methods ================================================================
-		void		openAccount(int newValue);
+		void		openAccount(double newValue);
 		void		closeAccount(int id);
 
 		friend std::ostream& operator<<(std::ostream& p_os, const Bank& p_bank);
