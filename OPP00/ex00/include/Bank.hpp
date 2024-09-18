@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:31:15 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/17 21:01:06 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/17 21:58:32 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 # define BANK_HPP
 
 # include <iostream>
-# include <vector>
+# include <sstream>
 # include <iomanip>
+# include <map>
 
 // Color codes as global variables
 const std::string RESET = "\033[0m";
@@ -62,11 +63,23 @@ class Bank
 
 	private:
 		double					_liquidity;
-		std::vector<Account *>	_clientAccounts;
+		std::map<int, Account *>	_clientAccounts;
 		//mudar para map e pesquisar conta por id []
 		//Acrescentar os exceptions
 
 	public:
+	// Exceptions =============================================================
+		class NotFoundException : public std::exception
+		{
+			private:
+				std::string message;
+			public:
+				NotFoundException(int id);
+				virtual ~NotFoundException() throw() {};
+				virtual const char* what() const throw();
+		};
+
+
 	// Constructor & Destructor ===============================================
 		Bank( void );
 		~Bank( void );
@@ -79,7 +92,6 @@ class Bank
 
 	// Getters ================================================================
 		double		getLiquidity( void ) const;
-		Account*	getAccount(int id) const;
 
 	// Setters ================================================================
 		void		setLiquidity(double newLiquidity);
@@ -90,6 +102,7 @@ class Bank
 		void		giveLoan(int id, double value);
 
 		friend std::ostream& operator<<(std::ostream& p_os, const Bank& p_bank);
+		Account& operator[](int id);
 };
 
 #endif
