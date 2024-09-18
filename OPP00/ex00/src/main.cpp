@@ -6,11 +6,12 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:26:10 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/17 20:37:38 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/17 20:58:53 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bank.hpp"
+
 void subject()
 {
 	Bank bank = Bank();
@@ -18,15 +19,13 @@ void subject()
 
 	bank.openAccount(100);
 	bank.openAccount(100);
-	Account *accountA = bank.getAccount(1);
-	Account *accountB = bank.getAccount(2);
 
 	bank.setLiquidity(-200);
-	bank.giveLoan(accountA->getId(), 400);
+	bank.giveLoan(bank.getAccount(1)->getId(), 400);
 
 	std::cout << "Account : " << std::endl;
-	std::cout << *accountA;
-	std::cout << *accountB;
+	std::cout << *bank.getAccount(1);
+	std::cout << *bank.getAccount(2);
 
 	std::cout << " ----- " << std::endl;
 
@@ -100,17 +99,13 @@ int main(void)
 	std::cout << BLUE;
 	std::cout << "---------------------------------------------------------\n";
 
-	Account* accountA = bank.getAccount(1);
-	Account* accountB = bank.getAccount(3);
-	Account* accountC = bank.getAccount(20);
-
 	std::cout << PURPLE << std::endl;
 	std::cout << "Accounts : " << std::endl;
 	std::cout << *bank.getAccount(5);
 	std::cout << *bank.getAccount(2);
-	std::cout << *accountA;
-	std::cout << *accountB;
-	std::cout << *accountC << std::endl;
+	std::cout << *bank.getAccount(1);
+	std::cout << *bank.getAccount(20);
+	std::cout << *bank.getAccount(3) << std::endl;
 
 	std::cout << BLUE << std::endl;
 	std::cout << "---------------------------------------------------------\n";

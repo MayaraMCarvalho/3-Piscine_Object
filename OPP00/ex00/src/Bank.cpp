@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:32:05 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/17 20:37:24 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/17 21:01:38 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ Bank& Bank::operator=( Bank const &other )
 // Getters ====================================================================
 double Bank::getLiquidity( void ) const { return this->_liquidity; }
 
-Account* Bank::getAccount(int id) const
+Bank::Account* Bank::getAccount(int id) const
 {
-	for (std::vector<Account*>::const_iterator it = _clientAccounts.begin();
+	for (std::vector<Bank::Account*>::const_iterator it = _clientAccounts.begin();
 		it != _clientAccounts.end(); ++it)
 	{
 		if ((**it).getId() == id) {
@@ -113,7 +113,7 @@ std::ostream& operator<<(std::ostream& p_os, const Bank& p_bank)
 	p_os << YELLOW << "Bank informations : " << std::endl;
 	p_os << "Liquidity : " << p_bank._liquidity << RESET << std::endl;
 
-	for (std::vector<Account*>::const_iterator it = p_bank._clientAccounts.begin();
+	for (std::vector<Bank::Account*>::const_iterator it = p_bank._clientAccounts.begin();
 			it != p_bank._clientAccounts.end(); ++it)
 		p_os << **it;
 

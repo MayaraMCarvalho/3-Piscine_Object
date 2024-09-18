@@ -6,23 +6,23 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:31:52 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/17 16:40:00 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/17 21:00:45 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Account.hpp"
+#include "Bank.hpp"
 
 // Constructor & Destructor ===================================================
-Account::Account( void ) : _id(-1), _value(0) {}
+Bank::Account::Account( void ) : _id(-1), _value(0) {}
 
-Account::Account(int id, double value) : _id(id), _value(value) {}
+Bank::Account::Account(int id, double value) : _id(id), _value(value) {}
 
-Account::Account( Account const &copy ) { *this = copy; }
+Bank::Account::Account( Account const &copy ) { *this = copy; }
 
-Account::~Account( void ) {}
+Bank::Account::~Account( void ) {}
 
 // Operators ==================================================================
-Account& Account::operator=( Account const &other )
+Bank::Account& Bank::Account::operator=( Account const &other )
 {
 	if (this != &other)
 	{
@@ -33,13 +33,13 @@ Account& Account::operator=( Account const &other )
 }
 
 // Getters ====================================================================
-int Account::getId( void ) const { return this->_id; }
+int Bank::Account::getId( void ) const { return this->_id; }
 
-double Account::getValue( void ) const { return this->_value; }
+double Bank::Account::getValue( void ) const { return this->_value; }
 
 // Methods ====================================================================
 
-std::ostream& operator<<(std::ostream& p_os, const Account& p_account)
+std::ostream& operator<<(std::ostream& p_os, const Bank::Account& p_account)
 {
 	if (p_account._id > 0)
 	{
