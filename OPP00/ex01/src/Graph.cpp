@@ -6,14 +6,14 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:55 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/19 16:00:43 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/19 19:01:07 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Graph.hpp"
 
 // Constructor & Destructor ===================================================
-Graph::Graph(Vector2 size) : size(size)
+Graph::Graph(Vector2 const &size) : size(size)
 {
 	std::cout << GREEN << "Graph created with size: " << YELLOW << "(" <<
 				size.getX() << ", " << size.getY() << ")" << RESET << std::endl;
