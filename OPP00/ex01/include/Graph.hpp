@@ -6,16 +6,18 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:42 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/17 19:43:01 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/19 16:00:51 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GRAPH_HPP
 # define GRAPH_HPP
 
-# include <iostream>
+# include <fstream>
 # include <vector>
-# include <limits>
+# include <string>
+
+# include <cmath>
 
 # include "Vector2.hpp"
 
@@ -43,6 +45,7 @@ class Graph
 	private:
 		Vector2					size;
 		std::vector<Vector2>	list;
+		std::vector<std::pair<Vector2, Vector2> >	lines;
 
 	public:
 	// Constructor & Destructor ===============================================
@@ -60,6 +63,9 @@ class Graph
 
 	// Methods ================================================================
 		void	printGraph( void );
+
+	// Bonus ==================================================================
+		void	readFile(const char* filename);
 };
 
 #endif

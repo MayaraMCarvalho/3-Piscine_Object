@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:55 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/17 19:48:48 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/19 16:00:43 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 // Constructor & Destructor ===================================================
 Graph::Graph(Vector2 size) : size(size)
 {
-	std::cout << GREEN << "Graph created with size: " << YELLOW << "(";
-	std::cout << size.getX() << ", " << size.getY() << ")" << RESET << std::endl;
+	std::cout << GREEN << "Graph created with size: " << YELLOW << "(" <<
+				size.getX() << ", " << size.getY() << ")" << RESET << std::endl;
 }
 
 Graph::Graph( Graph const &copy ) { *this = copy; }
@@ -43,8 +43,8 @@ void Graph::addPoint(float x, float y)
 	else
 	{
 		list.push_back(Vector2(x, y));
-		std::cout << GREEN << "Point added to graph: " << YELLOW << "(";
-		std::cout << x << ", " << y << ")" << RESET << std::endl;
+		std::cout << GREEN << "Point added to graph: " << YELLOW << "("
+					<< x << ", " << y << ")" << RESET << std::endl;
 	}
 }
 
@@ -68,4 +68,21 @@ void Graph::printGraph( void )
 	for (size_t x = 0; x < graph[0].size(); ++x)
 		std::cout << " " << x;
 	std::cout << RESET << std::endl;
+}
+
+// Bonus ======================================================================
+void Graph::readFile(const char* filename)
+{
+	std::ifstream file(filename);
+	if (!file.is_open())
+	{
+		std::cerr << RED << "Error opening file!" << RESET << std::endl;
+		return;
+	}
+
+	float x, y;
+	while (file >> x >> y)
+		addPoint(x, y);
+
+	file.close();
 }

@@ -6,14 +6,14 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:55 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/17 17:56:30 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/19 14:07:11 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Vector2.hpp"
 
 // Constructor & Destructor ===================================================
-Vector2::Vector2( void ) : x(0.0f), y(0.0f) {}
+Vector2::Vector2( void ) : x(NAN), y(NAN) {}
 
 Vector2::Vector2(float x, float y) : x(x), y(y) {}
 

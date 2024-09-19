@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:42 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/17 17:55:36 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/19 14:07:22 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define VECTOR2_HPP
 
 # include <iostream>
+
+# include <cmath>
 
 class Vector2
 {

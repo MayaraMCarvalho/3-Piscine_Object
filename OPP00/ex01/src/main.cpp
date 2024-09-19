@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:52:00 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/17 19:40:48 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/19 16:00:56 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,21 @@ int main( void )
 	std::cout << "---------------------------------------------------------\n";
 
 	graph.printGraph();
+
+	std::cout << BLUE << std::endl;
+	std::cout << "---------------------------------------------------------\n";
+	std::cout << CYAN;
+	std::cout << "File test...\n";
+	std::cout << BLUE;
+	std::cout << "---------------------------------------------------------\n";
+
+	Graph graph2(Vector2(9.0f, 9.0f));
+
+	std::cout << RESET << std::endl;
+	graph2.readFile("test.txt");
+
+	std::cout << RESET << std::endl;
+	graph2.printGraph();
 
 	std::cout << BLUE << std::endl;
 	std::cout << "---------------------------------------------------------\n";
