@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:42 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/19 20:23:03 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/19 23:22:08 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 class Worker
 {
 	private:
-		Position	coordonnee;
-		Statistic	stat;
-		Shovel		*shovel;
+		Position	_coordonnee;
+		Statistic	_stat;
+		Shovel		*_shovel;
 
 	public:
 	// Constructor & Destructor ===============================================

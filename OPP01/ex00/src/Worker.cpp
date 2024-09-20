@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:55 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/19 21:15:31 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/19 23:23:09 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 // Constructor & Destructor ===================================================
 
 Worker::Worker(Position const &pos, Statistic const &stat)
-	: coordonnee(pos), stat(stat)
+	: _coordonnee(pos), _stat(stat)
 {
-	this->shovel = NULL;
+	this->_shovel = NULL;
 	std::cout << GREEN << "Worker👷 created!" << RESET << std::endl;
 }
 
@@ -27,7 +27,7 @@ Worker::~Worker( void )
 }
 
 Worker::Worker( Worker const &copy )
-				: coordonnee(copy.coordonnee), stat(copy.stat)
+				: _coordonnee(copy._coordonnee), _stat(copy._stat)
 {
 	std::cout << YELLOW << "Worker👷 copied!" << RESET << std::endl;
 }
@@ -37,8 +37,8 @@ Worker& Worker::operator=( Worker const &other )
 {
 	if (this != &other)
 	{
-		this->coordonnee = other.coordonnee;
-		this->stat = other.stat;
+		this->_coordonnee = other._coordonnee;
+		this->_stat = other._stat;
 		std::cout << BLUE << "Worker👷 assigned!" << RESET << std::endl;
 	}
 	return *this;
@@ -46,7 +46,7 @@ Worker& Worker::operator=( Worker const &other )
 
 std::ostream& operator<<(std::ostream& p_os, const Worker& p_worker)
 {
-	p_os << BLUE << "\nWorker:\n" << p_worker.coordonnee << p_worker.stat
+	p_os << BLUE << "\nWorker:\n" << p_worker._coordonnee << p_worker._stat
 			<< RESET;
 
 	return (p_os);
@@ -63,14 +63,14 @@ void	Worker::giveShovel(Shovel& shovel)
 	if (userWorker != NULL)
 		userWorker->takenShovel();
 
-	this->shovel = &shovel;
+	this->_shovel = &shovel;
 	shovel.attachWorker(*this);
 	std::cout << BLUE << "Worker👷 received a shovel🛠️ !" << RESET << std::endl;
 }
 
 void	Worker::takenShovel( void )
 {
-	this->shovel = NULL;
+	this->_shovel = NULL;
 	std::cout << YELLOW << "Shovel🛠️  taken away!" << RESET << std::endl;
 }
 

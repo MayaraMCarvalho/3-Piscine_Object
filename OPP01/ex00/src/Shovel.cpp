@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:55 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/19 21:10:53 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/19 23:25:04 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Constructor & Destructor ===================================================
 
-Shovel::Shovel( void ) : numberOfUses(0), userWorker(NULL)
+Shovel::Shovel( void ) : _numberOfUses(0), _userWorker(NULL)
 {
 	std::cout << GREEN << "Shovel🛠️  default created!" << RESET << std::endl;
 }
@@ -31,7 +31,7 @@ Shovel& Shovel::operator=( Shovel const &other )
 {
 	if (this != &other)
 	{
-		this->numberOfUses = other.numberOfUses;
+		this->_numberOfUses = other._numberOfUses;
 	}
 	return *this;
 }
@@ -39,25 +39,25 @@ Shovel& Shovel::operator=( Shovel const &other )
 // Getters ====================================================================
 Worker* Shovel::getWorker( void ) const
 {
-	return userWorker;
+	return _userWorker;
 }
 
 // Setters ====================================================================
 void	Shovel::attachWorker(Worker &worker)
 {
-	this->userWorker = &worker;
+	this->_userWorker = &worker;
 }
 
 // Methods ====================================================================
 void	Shovel::use( void )
 {
-	this->numberOfUses++;
+	this->_numberOfUses++;
 
 	std::cout << PURPLE << "Shovel🛠️  used🕳️  ";
-	if (numberOfUses == 1)
+	if (_numberOfUses == 1)
 		std::cout << "once!";
 	else
-		std::cout << numberOfUses << " times!";
+		std::cout << _numberOfUses << " times!";
 	std::cout << RESET << std::endl;
 }
 

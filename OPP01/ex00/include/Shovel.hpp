@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:42 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/19 21:10:21 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/19 23:24:05 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ class Worker;
 class Shovel
 {
 	private:
-		int		numberOfUses;
-		Worker	*userWorker;
+		int		_numberOfUses;
+		Worker	*_userWorker;
 
 	public:
 	// Constructor & Destructor ===============================================
