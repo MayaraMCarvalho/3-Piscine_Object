@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:42 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/19 19:45:11 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/19 20:23:03 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,18 @@
 
 # include <iostream>
 
+# include "Colors.hpp"
 # include "Position.hpp"
 # include "Statistic.hpp"
-# include "Colors.hpp"
+# include "Shovel.hpp"
+
 
 class Worker
 {
 	private:
 		Position	coordonnee;
 		Statistic	stat;
+		Shovel		*shovel;
 
 	public:
 	// Constructor & Destructor ===============================================
@@ -36,13 +39,16 @@ class Worker
 
 	// Operators ==============================================================
 		Worker& operator=( Worker const &other );
+		friend std::ostream& operator<<(std::ostream& p_os, const Worker& p_worker);
 
 	// Getters ================================================================
 
 	// Setters ================================================================
 
 	// Methods ================================================================
-	friend std::ostream& operator<<(std::ostream& p_os, const Worker& p_worker);
+		void	giveShovel(Shovel& shovel);
+		void	takenShovel( void );
+
 
 };
 

@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:42 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/19 19:47:45 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/19 21:10:21 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@
 # include <iostream>
 # include "Colors.hpp"
 
+class Worker;
+
 class Shovel
 {
 	private:
-		int	numberOfUses;
+		int		numberOfUses;
+		Worker	*userWorker;
 
 	public:
 	// Constructor & Destructor ===============================================
@@ -34,10 +37,14 @@ class Shovel
 		Shovel& operator=( Shovel const &other );
 
 	// Getters ================================================================
+		Worker* getWorker( void ) const;
 
 	// Setters ================================================================
+		void	attachWorker(Worker &worker);
 
 	// Methods ================================================================
+		void	use( void );
+
 
 };
 

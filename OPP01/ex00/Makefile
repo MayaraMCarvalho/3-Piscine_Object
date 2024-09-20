@@ -6,13 +6,13 @@
 #    By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 16:33:22 by macarval          #+#    #+#              #
-#    Updated: 2024/09/19 18:11:09 by macarval         ###   ########.fr        #
+#    Updated: 2024/09/19 19:55:14 by macarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= relationship
 
-SRCS		= main.cpp Worker.cpp
+SRCS		= main.cpp Worker.cpp Shovel.cpp
 
 VPATH		= src/
 OBJS_PATH	= obj
