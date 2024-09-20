@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:42 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/19 19:39:14 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/19 23:00:23 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,6 @@ struct Statistic
 	{
 		std::cout << GREEN << "Statistic📊 created!";
 		std::cout << RESET << std::endl;
-	}
-
-	Statistic( Statistic const &copy ) : level(copy.level), exp(copy.exp)
-	{
-		std::cout << YELLOW << "Statistic📊 copied!" << RESET << std::endl;
-	}
-
-	Statistic& operator=( Statistic const &other )
-	{
-		if (this != &other)
-		{
-			this->level = other.level;
-			this->exp = other.exp;
-		}
-		std::cout << BLUE << "Statistic📊 assigned!" << RESET << std::endl;
-		return *this;
 	}
 
 	~Statistic( void )

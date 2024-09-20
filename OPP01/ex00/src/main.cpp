@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:52:00 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/19 22:33:41 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/19 23:13:04 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,11 @@ int main(void)
 	{
 		Position pos(10, 0, 0);
 		Statistic stat(50, 20);
+
 		Worker worker(pos, stat);
+
+		Position pos2(5, 0, 0);
+		Statistic stat2(10, 20);
 
 		std::cout << "\n***Infomations***" << worker << std::endl;
 	}
@@ -74,9 +78,32 @@ int main(void)
 
 		shovel.use();//mudar método
 
-		Worker *worker2 = new Worker(Position(0, 0, 0), Statistic(0, 0));
+
+	std::cout << BLUE << std::endl;
+	std::cout << "---------------------------------------------------------\n";
+	std::cout << CYAN;
+	std::cout << "Creating a second worker pointer without instantiating\n";
+	std::cout << "Position and Statistic...\n";
+	std::cout << "Printing worker information...\n";
+	std::cout << BLUE;
+	std::cout << "---------------------------------------------------------\n";
+
+
+		Worker *worker2 = new Worker(Position(10, 10, 10), Statistic(10, 10));
+		std::cout << "\n***Infomations***" << *worker << std::endl;
+
+	std::cout << BLUE << std::endl;
+	std::cout << "---------------------------------------------------------\n";
+	std::cout << CYAN;
+	std::cout << "Giving a shovel to a worker...\n";
+	std::cout << "Print information of the worker holding the shovel...\n";
+	std::cout << BLUE;
+	std::cout << "---------------------------------------------------------\n";
+
 		worker2->giveShovel(shovel);
 		std::cout << *shovel.getWorker() << std::endl;
+
+		shovel.use();//mudar método
 
 
 	std::cout << BLUE << std::endl;
@@ -87,6 +114,7 @@ int main(void)
 	std::cout << "---------------------------------------------------------\n";
 
 		delete worker;
+		delete worker2;
 
 	std::cout << BLUE << std::endl;
 	std::cout << "---------------------------------------------------------\n";

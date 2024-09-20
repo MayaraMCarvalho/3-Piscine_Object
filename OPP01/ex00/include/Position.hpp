@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:42 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/19 19:38:53 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/19 23:00:14 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,6 @@ struct Position
 	Position(int x, int y, int z) : x(x), y(y), z(z)
 	{
 		std::cout << GREEN << "Position🏘️  created!" << RESET << std::endl;
-	}
-
-	Position( Position const &copy ) : x(copy.x), y(copy.y), z(copy.z)
-	{
-		std::cout << YELLOW << "Position🏘️  copied!" << RESET << std::endl;
-	}
-
-	Position& operator=( Position const &other )
-	{
-		if (this != &other)
-		{
-			this->x = other.x;
-			this->y = other.y;
-			this->z = other.z;
-		}
-		std::cout << BLUE << "Position🏘️  assigned!" << RESET << std::endl;
-		return *this;
 	}
 
 	~Position( void )
