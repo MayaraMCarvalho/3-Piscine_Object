@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:42 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/19 19:00:55 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/19 23:21:30 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,8 @@ const std::string BWHITE = "\033[1;37m";
 class Graph
 {
 	private:
-		Vector2					size;
-		std::vector<Vector2>	list;
-		std::vector<std::pair<Vector2, Vector2> >	lines;
+		Vector2					_size;
+		std::vector<Vector2>	_list;
 
 	public:
 	// Constructor & Destructor ===============================================

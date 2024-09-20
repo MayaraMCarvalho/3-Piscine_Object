@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:42 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/19 14:07:22 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/19 23:21:19 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 class Vector2
 {
 	private:
-		float x;
-		float y;
+		float _x;
+		float _y;
 
 	public:
 	// Constructor & Destructor ===============================================

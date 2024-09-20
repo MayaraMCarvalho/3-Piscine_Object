@@ -6,16 +6,16 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:55 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/19 14:07:11 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/19 23:20:04 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Vector2.hpp"
 
 // Constructor & Destructor ===================================================
-Vector2::Vector2( void ) : x(NAN), y(NAN) {}
+Vector2::Vector2( void ) : _x(NAN), _y(NAN) {}
 
-Vector2::Vector2(float x, float y) : x(x), y(y) {}
+Vector2::Vector2(float x, float y) : _x(x), _y(y) {}
 
 Vector2::Vector2( Vector2 const &copy ) { *this = copy; }
 
@@ -26,16 +26,16 @@ Vector2& Vector2::operator=( Vector2 const &other )
 {
 	if (this != &other)
 	{
-		this->x = other.x;
-		this->y = other.y;
+		this->_x = other._x;
+		this->_y = other._y;
 	}
 	return *this;
 }
 
 // Getters ====================================================================
-float Vector2::getX() const { return x; }
+float Vector2::getX() const { return _x; }
 
-float Vector2::getY() const { return y; }
+float Vector2::getY() const { return _y; }
 
 // Setters ====================================================================
 

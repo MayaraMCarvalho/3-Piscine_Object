@@ -6,17 +6,17 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:55 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/19 19:01:07 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/19 23:20:57 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Graph.hpp"
 
 // Constructor & Destructor ===================================================
-Graph::Graph(Vector2 const &size) : size(size)
+Graph::Graph(Vector2 const &size) : _size(size)
 {
 	std::cout << GREEN << "Graph created with size: " << YELLOW << "(" <<
-				size.getX() << ", " << size.getY() << ")" << RESET << std::endl;
+				_size.getX() << ", " << _size.getY() << ")" << RESET << std::endl;
 }
 
 Graph::Graph( Graph const &copy ) { *this = copy; }
@@ -28,8 +28,8 @@ Graph& Graph::operator=( Graph const &other )
 {
 	if (this != &other)
 	{
-		this->size = other.size;
-		this->list = other.list;
+		this->_size = other._size;
+		this->_list = other._list;
 	}
 	return *this;
 }
@@ -37,12 +37,12 @@ Graph& Graph::operator=( Graph const &other )
 // Setters ====================================================================
 void Graph::addPoint(float x, float y)
 {
-	if (x > size.getX() || y > size.getY())
+	if (x > _size.getX() || y > _size.getY())
 		std::cerr << RED << "Point outside the graph limits!"
 					<< RESET << std::endl;
 	else
 	{
-		list.push_back(Vector2(x, y));
+		_list.push_back(Vector2(x, y));
 		std::cout << GREEN << "Point added to graph: " << YELLOW << "("
 					<< x << ", " << y << ")" << RESET << std::endl;
 	}
@@ -52,10 +52,10 @@ void Graph::addPoint(float x, float y)
 void Graph::printGraph( void )
 {
 	std::vector< std::vector<std::string> >
-			graph(size.getY() + 1, std::vector<std::string>(size.getX() + 1, "⋆"));
+			graph(_size.getY() + 1, std::vector<std::string>(_size.getX() + 1, "⋆"));
 
-	for (size_t i = 0; i < list.size(); ++i)
-		graph[list[i].getY()][list[i].getX()] = "✘";
+	for (size_t i = 0; i < _list.size(); ++i)
+		graph[_list[i].getY()][_list[i].getX()] = "✘";
 
 	for (size_t y = graph.size(); y-- > 0 ;)
 	{
