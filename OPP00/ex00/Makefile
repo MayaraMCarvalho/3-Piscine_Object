@@ -6,7 +6,7 @@
 #    By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 16:33:22 by macarval          #+#    #+#              #
-#    Updated: 2025/09/03 13:55:42 by macarval         ###   ########.fr        #
+#    Updated: 2025/09/03 15:55:59 by macarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,7 @@ git:
 						2) status="In Progress..." ;; \
 						3) status="Done!!" ;; \
 						4) status="Correction" ;; \
+						5) status="Bonus" ;; \
 						*) echo "Escolha inválida"; exit 1 ;; \
 			esac; \
 			echo -n "\n"; \
