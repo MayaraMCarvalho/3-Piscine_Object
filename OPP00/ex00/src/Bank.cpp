@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:32:05 by macarval          #+#    #+#             */
-/*   Updated: 2025/09/03 13:26:06 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:43:13 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,12 @@ Bank::Bank( void ) : _liquidity(0) {}
 
 Bank::Bank( Bank const &copy ) { *this = copy; }
 
-Bank::~Bank( void ) {}
+Bank::~Bank( void )
+{
+	for (std::map<int, Account*>::iterator it = _clientAccounts.begin();
+			it != _clientAccounts.end(); ++it)
+		delete it->second;
+}
 
 // Operators ==================================================================
 Bank& Bank::operator=( Bank const &other )
@@ -91,7 +96,7 @@ void Bank::closeAccount(int id)
 
 		std::cout << YELLOW << "Account " << id << " closed!";
 		std::cout << RESET << std::endl;
-		
+
 		return ;
 	}
 
