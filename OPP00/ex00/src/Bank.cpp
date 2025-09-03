@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:32:05 by macarval          #+#    #+#             */
-/*   Updated: 2025/09/03 14:43:13 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/03 15:48:53 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ void Bank::giveLoan(int id, double value)
 	Account *account = _clientAccounts[id];
 	if (account->getId() != -1)
 	{
-		account->deposit(value);
+		account->_value += value;
 		this->_liquidity -= value;
 		std::cout << GREEN << "Loan granted successfully!";
 		std::cout << RESET << std::endl;

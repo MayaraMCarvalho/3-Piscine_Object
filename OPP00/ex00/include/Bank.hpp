@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:31:15 by macarval          #+#    #+#             */
-/*   Updated: 2025/09/03 14:23:46 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/03 15:47:50 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class Bank
 	public:
 	// Nested Class ===========================================================
 		class Account;
-		
+
 	private:
 	// Attributes ==============================================================
 		double						_liquidity;
@@ -104,9 +104,6 @@ class Bank
 			// Getters ================================================================
 				int			getId( void ) const;
 				double		getValue( void ) const;
-
-			// Setters ================================================================
-				void		deposit(double amount);
 		};
 };
 
