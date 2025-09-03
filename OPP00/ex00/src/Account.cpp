@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:31:52 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/17 21:00:45 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/03 13:24:22 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ int Bank::Account::getId( void ) const { return this->_id; }
 
 double Bank::Account::getValue( void ) const { return this->_value; }
 
+// Setters ====================================================================
+void Bank::Account::deposit(double amount)
+{
+	this->_value += amount;
+}
+
 // Methods ====================================================================
 
 std::ostream& operator<<(std::ostream& p_os, const Bank::Account& p_account)
@@ -49,4 +55,3 @@ std::ostream& operator<<(std::ostream& p_os, const Bank::Account& p_account)
 	}
 	return (p_os);
 }
-

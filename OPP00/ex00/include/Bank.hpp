@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:31:15 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/17 21:58:32 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/03 13:52:27 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,55 +31,44 @@ const std::string GRAY = "\033[37;1m";
 class Bank
 {
 	public:
+	// Nested Class ============================================================
 		class Account
-			{
-				private:
-					int		_id;
-					double	_value;
-
-					// Constructor & Destructor ===============================================
-					Account( void );
-					Account(int id, double value);
-					~Account( void );
-
-					// ========================================================================
-					Account( Account const &copy );
-
-					friend class Bank;
-
-				public:
-				// Operators ==============================================================
-					Account&	operator=( Account const &other );
-
-				// Getters ================================================================
-					int			getId( void ) const;
-					double		getValue( void ) const;
-
-				// Methods ================================================================
-					friend std::ostream& operator<<
-											(std::ostream& p_os, const Account& p_account);
-
-			};
-
-	private:
-		double					_liquidity;
-		std::map<int, Account *>	_clientAccounts;
-		//mudar para map e pesquisar conta por id []
-		//Acrescentar os exceptions
-
-	public:
-	// Exceptions =============================================================
-		class NotFoundException : public std::exception
 		{
 			private:
-				std::string message;
+				int		_id;
+				double	_value;
+
+			// Constructor & Destructor ===============================================
+				Account( void );
+				Account(int id, double value);
+				~Account( void );
+
+			// ========================================================================
+				Account( Account const &copy );
+
+				friend class Bank;
+
 			public:
-				NotFoundException(int id);
-				virtual ~NotFoundException() throw() {};
-				virtual const char* what() const throw();
+			// Operators ==============================================================
+				Account&	operator=( Account const &other );
+
+			// Getters ================================================================
+				int			getId( void ) const;
+				double		getValue( void ) const;
+
+			// Setters ================================================================
+				void		deposit(double amount);
+
+			// Methods ================================================================
+				friend std::ostream& operator<<
+										(std::ostream& p_os, const Account& p_account);
 		};
+		
+	private:
+		double						_liquidity;
+		std::map<int, Account *>	_clientAccounts;
 
-
+	public:
 	// Constructor & Destructor ===============================================
 		Bank( void );
 		~Bank( void );
@@ -91,18 +80,29 @@ class Bank
 		Bank&	operator=( Bank const &other );
 
 	// Getters ================================================================
-		double		getLiquidity( void ) const;
+		double	getLiquidity( void ) const;
 
 	// Setters ================================================================
-		void		setLiquidity(double newLiquidity);
+		void	setLiquidity(double newLiquidity);
 
 	// Methods ================================================================
-		void		openAccount(double newValue);
-		void		closeAccount(int id);
-		void		giveLoan(int id, double value);
+		void	openAccount(double newValue);
+		void	closeAccount(int id);
+		void	giveLoan(int id, double value);
 
 		friend std::ostream& operator<<(std::ostream& p_os, const Bank& p_bank);
 		Account& operator[](int id);
+
+	// Exceptions =============================================================
+		class NotFoundException : public std::exception
+		{
+			private:
+				std::string message;
+			public:
+				NotFoundException(int id);
+				virtual ~NotFoundException() throw() {};
+				virtual const char* what() const throw();
+		};
 };
 
 #endif

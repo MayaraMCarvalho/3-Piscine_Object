@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:32:05 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/17 22:02:27 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/03 13:26:06 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ Bank& Bank::operator=( Bank const &other )
 		this->_liquidity = other._liquidity;
 		this->_clientAccounts = other._clientAccounts;
 	}
+
 	return *this;
 }
 
@@ -34,6 +35,7 @@ Bank::Account& Bank::operator[](int id)
 {
 	if (_clientAccounts.find(id) == _clientAccounts.end())
 		throw NotFoundException(id);
+
 	return *(_clientAccounts[id]);
 }
 
@@ -71,6 +73,7 @@ void Bank::openAccount(double newValue)
 		id = _clientAccounts.rbegin()->first + 1;
 
 	this->_liquidity += tax;
+
 	Account	*newAccount = new Account(id, newValue - tax);
 	_clientAccounts[id] = newAccount;
 
@@ -80,42 +83,43 @@ void Bank::openAccount(double newValue)
 void Bank::closeAccount(int id)
 {
 	std::map<int, Account*>::iterator it = _clientAccounts.find(id);
+
 	if (it != _clientAccounts.end())
 	{
 		delete it->second;
 		_clientAccounts.erase(it);
+
 		std::cout << YELLOW << "Account " << id << " closed!";
 		std::cout << RESET << std::endl;
+		
 		return ;
 	}
-	else
-	{
-		std::cerr << RED << "Can't close account! " << RESET;
-		throw NotFoundException(id);
-	}
+
+	std::cerr << RED << "Can't close account! " << RESET;
+	throw NotFoundException(id);
 }
 
 void Bank::giveLoan(int id, double value)
 {
 	if (value < 0)
 		throw std::runtime_error("Can't loan negative values!");
-	else if (value > this->_liquidity)
+
+	if (value > this->_liquidity)
 		throw std::runtime_error("Insufficient bank funds!");
-	else
+
+	if (_clientAccounts.find(id) == _clientAccounts.end())
 	{
-		if (_clientAccounts.find(id) == _clientAccounts.end())
-		{
-			std::cerr << RED << "Loan denied! " << RESET;
-			throw NotFoundException(id);
-		}
-		Account *account = _clientAccounts[id];
-		if (account->getId() != -1)
-		{
-			account->_value += value;
-			this->_liquidity -= value;
-			std::cout << GREEN << "Loan granted successfully!";
-			std::cout << RESET << std::endl;
-		}
+		std::cerr << RED << "Loan denied! " << RESET;
+		throw NotFoundException(id);
+	}
+
+	Account *account = _clientAccounts[id];
+	if (account->getId() != -1)
+	{
+		account->deposit(value);
+		this->_liquidity -= value;
+		std::cout << GREEN << "Loan granted successfully!";
+		std::cout << RESET << std::endl;
 	}
 }
 
@@ -130,4 +134,3 @@ const char* Bank::NotFoundException::what() const throw()
 {
 	return message.c_str();
 }
-
