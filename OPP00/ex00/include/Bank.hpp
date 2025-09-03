@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:31:15 by macarval          #+#    #+#             */
-/*   Updated: 2025/09/03 13:52:27 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:23:46 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,40 +31,11 @@ const std::string GRAY = "\033[37;1m";
 class Bank
 {
 	public:
-	// Nested Class ============================================================
-		class Account
-		{
-			private:
-				int		_id;
-				double	_value;
-
-			// Constructor & Destructor ===============================================
-				Account( void );
-				Account(int id, double value);
-				~Account( void );
-
-			// ========================================================================
-				Account( Account const &copy );
-
-				friend class Bank;
-
-			public:
-			// Operators ==============================================================
-				Account&	operator=( Account const &other );
-
-			// Getters ================================================================
-				int			getId( void ) const;
-				double		getValue( void ) const;
-
-			// Setters ================================================================
-				void		deposit(double amount);
-
-			// Methods ================================================================
-				friend std::ostream& operator<<
-										(std::ostream& p_os, const Account& p_account);
-		};
+	// Nested Class ===========================================================
+		class Account;
 		
 	private:
+	// Attributes ==============================================================
 		double						_liquidity;
 		std::map<int, Account *>	_clientAccounts;
 
@@ -102,6 +73,40 @@ class Bank
 				NotFoundException(int id);
 				virtual ~NotFoundException() throw() {};
 				virtual const char* what() const throw();
+		};
+
+	// Nested Class ===========================================================
+		class Account
+		{
+			private:
+			// Attributes =============================================================
+				int		_id;
+				double	_value;
+
+			// Constructor & Destructor ===============================================
+				Account( void );
+				Account(int id, double value);
+				~Account( void );
+
+			// ========================================================================
+				Account( Account const &copy );
+
+				friend class Bank;
+
+			// Methods ================================================================
+				friend std::ostream& operator<<
+										(std::ostream& p_os, const Account& p_account);
+
+			public:
+			// Operators ==============================================================
+				Account&	operator=( Account const &other );
+
+			// Getters ================================================================
+				int			getId( void ) const;
+				double		getValue( void ) const;
+
+			// Setters ================================================================
+				void		deposit(double amount);
 		};
 };
 
