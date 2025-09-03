@@ -6,7 +6,7 @@
 #    By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 16:33:22 by macarval          #+#    #+#              #
-#    Updated: 2024/09/10 18:34:23 by macarval         ###   ########.fr        #
+#    Updated: 2025/09/03 13:55:42 by macarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,8 +90,12 @@ git:
 						4) status="Correction" ;; \
 						*) echo "Escolha inválida"; exit 1 ;; \
 			esac; \
+			echo -n "\n"; \
+			echo "$(BGREEN)Enter the commit message:"; \
+			read msg; \
+			echo -n "\n"; \
 			echo "$(BLUE)"; \
-			git commit -m "[OPP$$list]: ex$$ex $$status"
+			git commit -m "[Cpp$$list]: ex$$ex - ($$status) $$msg"; \
 			git push
 
 .PHONY:		all re clean fclean comp val git
