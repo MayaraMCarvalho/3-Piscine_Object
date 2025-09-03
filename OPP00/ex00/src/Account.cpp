@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:31:52 by macarval          #+#    #+#             */
-/*   Updated: 2025/09/03 15:47:58 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/03 15:50:57 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,6 @@ Bank::Account& Bank::Account::operator=( Account const &other )
 	return *this;
 }
 
-// Getters ====================================================================
-int Bank::Account::getId( void ) const { return this->_id; }
-
-double Bank::Account::getValue( void ) const { return this->_value; }
-
-// Methods ====================================================================
-
 std::ostream& operator<<(std::ostream& p_os, const Bank::Account& p_account)
 {
 	if (p_account._id > 0)
@@ -49,3 +42,10 @@ std::ostream& operator<<(std::ostream& p_os, const Bank::Account& p_account)
 	}
 	return (p_os);
 }
+
+// Getters ====================================================================
+int Bank::Account::getId( void ) const { return this->_id; }
+
+double Bank::Account::getValue( void ) const { return this->_value; }
+
+// Methods ====================================================================

@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:31:15 by macarval          #+#    #+#             */
-/*   Updated: 2025/09/03 15:47:50 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/03 15:51:39 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ class Bank
 
 	// Operators ==============================================================
 		Bank&	operator=( Bank const &other );
+		friend std::ostream& operator<<(std::ostream& p_os, const Bank& p_bank);
+		Account& operator[](int id);
 
 	// Getters ================================================================
 		double	getLiquidity( void ) const;
@@ -60,9 +62,6 @@ class Bank
 		void	openAccount(double newValue);
 		void	closeAccount(int id);
 		void	giveLoan(int id, double value);
-
-		friend std::ostream& operator<<(std::ostream& p_os, const Bank& p_bank);
-		Account& operator[](int id);
 
 	// Exceptions =============================================================
 		class NotFoundException : public std::exception
@@ -93,7 +92,7 @@ class Bank
 
 				friend class Bank;
 
-			// Methods ================================================================
+			// Operators ==============================================================
 				friend std::ostream& operator<<
 										(std::ostream& p_os, const Account& p_account);
 
