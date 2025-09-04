@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:26:10 by macarval          #+#    #+#             */
-/*   Updated: 2025/09/03 11:45:36 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/04 15:58:02 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,16 @@ void subject()
 	bank.openAccount(100);
 
 	bank.setLiquidity(-200);
-	bank.giveLoan(bank[1].getId(), 400);
+	bank.giveLoan(6, 400);
 
 	std::cout << "Account : " << std::endl;
-	std::cout << bank[1];
-	std::cout << bank[2];
+	std::cout << bank[6];
+	std::cout << bank[7];
 
 	std::cout << " ----- " << std::endl;
 
 	std::cout << "Bank : " << std::endl;
-	std::cout << bank << std::endl;
-
+	std::cout << bank;
 }
 
 int main(void)
@@ -133,7 +132,7 @@ int main(void)
 		std::cout << BLUE;
 		std::cout << "---------------------------------------------------------\n";
 
-		subject();
+			subject();
 
 		std::cout << BLUE << std::endl;
 		std::cout << "---------------------------------------------------------\n";
