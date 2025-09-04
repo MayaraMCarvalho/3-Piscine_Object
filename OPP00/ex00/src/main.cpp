@@ -75,7 +75,7 @@ int main(void)
 		std::cout << BLUE;
 		std::cout << "---------------------------------------------------------\n";
 
-		bank.closeAccount(2);
+		bank.closeAccount(4);
 
 		std::cout << BLUE << std::endl;
 		std::cout << "---------------------------------------------------------\n";

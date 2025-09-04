@@ -12,6 +12,8 @@
 
 #include "Bank.hpp"
 
+int	ID_control = 0;
+
 // Constructor & Destructor ===================================================
 Bank::Bank( void ) : _liquidity(0) {}
 
@@ -71,16 +73,11 @@ void Bank::setLiquidity(double newLiquidity)
 // Methods ====================================================================
 void Bank::openAccount(double newValue)
 {
-	int		id = 1;
 	double	tax = newValue * 0.05;
-
-	if (!_clientAccounts.empty())
-		id = _clientAccounts.rbegin()->first + 1;
-
 	this->_liquidity += tax;
 
-	Account	*newAccount = new Account(id, newValue - tax);
-	_clientAccounts[id] = newAccount;
+	Account	*newAccount = new Account(++ID_control, newValue - tax);
+	_clientAccounts[ID_control] = newAccount;
 
 	std::cout << GREEN << "New Account created : " << *newAccount;
 }
