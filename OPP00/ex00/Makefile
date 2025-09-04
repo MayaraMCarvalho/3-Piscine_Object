@@ -82,6 +82,7 @@ git:
 			echo "2. In Progress..."; \
 			echo "3. Done!!"; \
 			echo "4. Correction"; \
+			echo "5. Bonus"; \
 			read status_choice; \
 			case $$status_choice in \
 						1) status="Init." ;; \
