@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:42 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/19 23:23:59 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/10 10:59:48 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,12 @@ struct Statistic
 
 	friend std::ostream& operator<<(std::ostream& p_os, const Statistic& p_stat)
 	{
-		p_os << BLUE << "   Statistic:" << YELLOW << "\n   level - "
-				<< p_stat._level << "\n   exp - "
+		p_os << CYAN << "   Statistic:" << YELLOW << "\n      level - "
+				<< p_stat._level << "\n      exp - "
 				<< p_stat._exp << RESET << std::endl;
 
 		return (p_os);
 	}
-
 };
 
 #endif

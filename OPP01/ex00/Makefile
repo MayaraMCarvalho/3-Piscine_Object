@@ -6,13 +6,13 @@
 #    By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 16:33:22 by macarval          #+#    #+#              #
-#    Updated: 2024/09/19 19:55:14 by macarval         ###   ########.fr        #
+#    Updated: 2025/09/12 21:24:34 by macarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= relationship
 
-SRCS		= main.cpp Worker.cpp Shovel.cpp
+SRCS		= main.cpp Worker.cpp Shovel.cpp Hammer.cpp ATool.cpp
 
 VPATH		= src/
 OBJS_PATH	= obj
@@ -101,8 +101,12 @@ git:
 						5) status="Bonus" ;; \
 						*) echo "Escolha inválida"; exit 1 ;; \
 			esac; \
+			echo -n "\n"; \
+			echo "$(BGREEN)Enter the commit message:"; \
+			read msg; \
+			echo -n "\n"; \
 			echo "$(BLUE)"; \
-			git commit -m "[OPP$$list]: ex$$ex $$status"
+			git commit -m "[Cpp$$list]: ex$$ex - ($$status) $$msg"; \
 			git push
 
 .PHONY:		all re clean fclean comp val git

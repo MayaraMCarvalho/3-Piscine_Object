@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:42 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/19 23:22:08 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/12 21:45:06 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,26 @@
 # define WORKER_HPP
 
 # include <iostream>
+# include <vector>
+# include <algorithm>
+# include <typeinfo>
 
 # include "Colors.hpp"
 # include "Position.hpp"
 # include "Statistic.hpp"
+# include "ATool.hpp"
 # include "Shovel.hpp"
+# include "Hammer.hpp"
 
 
 class Worker
 {
 	private:
-		Position	_coordonnee;
-		Statistic	_stat;
-		Shovel		*_shovel;
+		Position			_coordonnee;
+		Statistic			_stat;
+		std::vector<ATool*>	_tools;
+	// Methods ================================================================
+		void	takenTool(ATool& tool);
 
 	public:
 	// Constructor & Destructor ===============================================
@@ -42,14 +49,12 @@ class Worker
 		friend std::ostream& operator<<(std::ostream& p_os, const Worker& p_worker);
 
 	// Getters ================================================================
+		ATool* getTool(ATool *obj) const;
 
 	// Setters ================================================================
 
 	// Methods ================================================================
-		void	giveShovel(Shovel& shovel);
-		void	takenShovel( void );
-
-
+		void	giveTool(ATool& tool);
 };
 
 #endif

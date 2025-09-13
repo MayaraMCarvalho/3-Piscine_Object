@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:55 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/19 23:25:04 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/12 21:27:31 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 // Constructor & Destructor ===================================================
 
-Shovel::Shovel( void ) : _numberOfUses(0), _userWorker(NULL)
+Shovel::Shovel( void ) : ATool(0, NULL)
 {
-	std::cout << GREEN << "Shovel🛠️  default created!" << RESET << std::endl;
+	std::cout << GREEN << "Shovel🛠️  created!" << RESET << std::endl;
 }
 
 Shovel::~Shovel( void )
@@ -24,29 +24,25 @@ Shovel::~Shovel( void )
 	std::cout << RED << "Shovel🛠️  destroyed!" << RESET << std::endl;
 }
 
-Shovel::Shovel( Shovel const &copy ) { *this = copy; }
+Shovel::Shovel( Shovel const &copy ) : ATool (copy)
+{
+	std::cout << YELLOW << "Shovel🛠️  copied!" << RESET << std::endl;
+}
 
 // Operators ==================================================================
 Shovel& Shovel::operator=( Shovel const &other )
 {
 	if (this != &other)
 	{
-		this->_numberOfUses = other._numberOfUses;
+		ATool::operator=(other);
+		std::cout << BLUE << "Shovel🛠️  assigned!" << RESET << std::endl;
 	}
 	return *this;
 }
 
 // Getters ====================================================================
-Worker* Shovel::getWorker( void ) const
-{
-	return _userWorker;
-}
 
 // Setters ====================================================================
-void	Shovel::attachWorker(Worker &worker)
-{
-	this->_userWorker = &worker;
-}
 
 // Methods ====================================================================
 void	Shovel::use( void )

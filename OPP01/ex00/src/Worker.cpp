@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:55 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/19 23:23:09 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/12 21:33:20 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 // Constructor & Destructor ===================================================
 
 Worker::Worker(Position const &pos, Statistic const &stat)
-	: _coordonnee(pos), _stat(stat)
+	: _coordonnee(pos), _stat(stat), _tools()
 {
-	this->_shovel = NULL;
 	std::cout << GREEN << "Worker👷 created!" << RESET << std::endl;
 }
 
@@ -51,27 +50,51 @@ std::ostream& operator<<(std::ostream& p_os, const Worker& p_worker)
 
 	return (p_os);
 }
+
 // Getters ====================================================================
+ATool* Worker::getTool(ATool* obj) const
+{
+	for (std::vector<ATool*>::const_iterator it = this->_tools.begin();
+			it != this->_tools.end(); ++it)
+	{
+		if (typeid(**it) == typeid(*obj))
+			return (*it);
+	}
+	return (NULL);
+}
 
 // Setters ====================================================================
 
 // Methods ====================================================================
-void	Worker::giveShovel(Shovel& shovel)
+void	Worker::giveTool(ATool& tool)
 {
-	Worker *userWorker = shovel.getWorker();
+	Worker *userWorker = tool.getWorker();
 
 	if (userWorker != NULL)
-		userWorker->takenShovel();
+		userWorker->takenTool(tool);
 
-	this->_shovel = &shovel;
-	shovel.attachWorker(*this);
-	std::cout << BLUE << "Worker👷 received a shovel🛠️ !" << RESET << std::endl;
+	this->_tools.push_back(&tool);
+	tool.attachWorker(*this);
+
+	std::string name = typeid(tool).name();
+	std::cout << BLUE << "Worker👷 received a "<< name.substr(1)
+				<< "🛠️ !" << RESET << std::endl;
 }
 
-void	Worker::takenShovel( void )
+void	Worker::takenTool(ATool& tool)
 {
-	this->_shovel = NULL;
-	std::cout << YELLOW << "Shovel🛠️  taken away!" << RESET << std::endl;
+	for (std::vector<ATool*>::iterator it = this->_tools.begin();
+			it != this->_tools.end(); ++it)
+	{
+		if (*it == &tool)
+		{
+			this->_tools.erase(it);
+			std::string name = typeid(tool).name();
+			std::cout << YELLOW << name.substr(1) << "🛠️  taken away!"
+					<< RESET << std::endl;
+			return ;
+		}
+	}
 }
 
 // Exceptions =================================================================

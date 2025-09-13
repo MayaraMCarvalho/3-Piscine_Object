@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:42 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/19 23:23:27 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/12 19:23:04 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define POSITION_HPP
 
 # include <iostream>
+
 # include "Colors.hpp"
 
 struct Position
@@ -40,7 +41,7 @@ struct Position
 
 	friend std::ostream& operator<<(std::ostream& p_os, const Position& p_pos)
 	{
-		p_os << BLUE << "   Position:\n   " << YELLOW << p_pos._x << ", "
+		p_os << CYAN << "   Position:\n      " << YELLOW << p_pos._x << ", "
 				<< p_pos._y << ", " << p_pos._z << RESET << std::endl;
 
 		return (p_os);
