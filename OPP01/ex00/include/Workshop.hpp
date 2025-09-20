@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:42 by macarval          #+#    #+#             */
-/*   Updated: 2025/09/19 22:11:50 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/20 10:55:44 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ class Workshop
 
 	// Setters ================================================================
 		void registerWorker(Worker* worker);
+		void removeWorker(Worker* worker);
 
 	// Methods ================================================================
 

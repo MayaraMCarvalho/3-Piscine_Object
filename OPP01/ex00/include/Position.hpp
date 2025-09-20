@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:42 by macarval          #+#    #+#             */
-/*   Updated: 2025/09/12 19:23:04 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/20 11:08:05 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ struct Position
 
 	~Position( void )
 	{
-		std::cout << RED << "Position🏘️  destroyed!" << RESET  << std::endl;
+		std::cout << RED << "Position🏘️  destroyed!\n" << RESET  << std::endl;
 	}
 
 	friend std::ostream& operator<<(std::ostream& p_os, const Position& p_pos)

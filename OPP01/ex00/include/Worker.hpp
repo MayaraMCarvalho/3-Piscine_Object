@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:42 by macarval          #+#    #+#             */
-/*   Updated: 2025/09/19 22:11:35 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/20 10:58:02 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ class Worker
 		friend std::ostream& operator<<(std::ostream& p_os, const Worker& p_worker);
 
 	// Getters ================================================================
-		ATool* getTool(ATool *obj) const;
+		ATool* getTool(ATool *obj) const; // verificar se é mesmo necessário
 
 	// Setters ================================================================
 

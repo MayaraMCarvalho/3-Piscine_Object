@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:52:00 by macarval          #+#    #+#             */
-/*   Updated: 2025/09/19 22:15:00 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/20 11:24:41 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int main(void)
 		std::cout << "\n***Infomations***" << worker << std::endl;
 	}
 
-	std::cout << BLUE << std::endl;
+	std::cout << BLUE;
 	std::cout << "---------------------------------------------------------\n";
 	std::cout << CYAN;
 	std::cout << "Instance a Shovel and a Hammer...\n";
@@ -61,7 +61,7 @@ int main(void)
 	std::cout << "---------------------------------------------------------\n";
 
 		Worker *worker = new Worker(Position(25, 10, 50), Statistic(15, 45));
-		std::cout << "\n***Infomations***" << *worker;
+		std::cout << "***Infomations***" << *worker;
 
 	std::cout << BLUE << std::endl;
 	std::cout << "---------------------------------------------------------\n";
@@ -79,14 +79,14 @@ int main(void)
 	std::cout << BLUE << std::endl;
 	std::cout << "---------------------------------------------------------\n";
 	std::cout << CYAN;
-	std::cout << "Creating a second worker pointer without instantiating\n";
+	std::cout << "Creating a second worker pointer without instantiating.\n";
 	std::cout << "Position and Statistic...\n";
 	std::cout << "Printing worker information...\n";
 	std::cout << BLUE;
 	std::cout << "---------------------------------------------------------\n";
 
 		Worker *worker2 = new Worker(Position(10, 10, 10), Statistic(10, 10));
-		std::cout << "\n***Infomations***" << *worker2;
+		std::cout << "***Infomations***" << *worker2;
 
 	std::cout << BLUE << std::endl;
 	std::cout << "---------------------------------------------------------\n";
@@ -96,10 +96,12 @@ int main(void)
 	std::cout << BLUE;
 	std::cout << "---------------------------------------------------------\n";
 
-		std::cout << RESET << std::endl;
+		std::cout << RESET;
 		std::cout << "Initial tool user worker: " << *shovel.getWorker();
+		std::cout << std::endl;
 
 		worker2->giveTool(shovel);
+
 		std::cout << "\nWork Information: " << *worker2;
 		std::cout << "\nTool user worker: " << *shovel.getWorker();
 
@@ -112,7 +114,7 @@ int main(void)
 
 		delete worker2;
 
-	std::cout << BLUE << std::endl;
+	std::cout << BLUE;
 	std::cout << "---------------------------------------------------------\n";
 	std::cout << CYAN;
 	std::cout << "returning the tool to the worker...\n";
@@ -130,7 +132,7 @@ int main(void)
 
 		delete worker;
 
-	std::cout << BLUE << std::endl;
+	std::cout << BLUE;
 	std::cout << "---------------------------------------------------------\n";
 	std::cout << CYAN;
 	std::cout << "... the shovel still exists!\n";
@@ -139,12 +141,13 @@ int main(void)
 
 		shovel.use();
 		hammer.use();
+		std::cout << std::endl;
 	}
 
 	std::cout << BLUE << std::endl;
 	std::cout << "---------------------------------------------------------\n";
 	std::cout << CYAN;
-	std::cout << "Trying to instantiate a Tool\n";
+	std::cout << "Trying to instantiate a Tool...\n";
 	std::cout << "Uncomment to test\n";
 	std::cout << BLUE;
 	std::cout << "---------------------------------------------------------\n";
@@ -156,28 +159,46 @@ int main(void)
 	std::cout << BLUE << std::endl;
 	std::cout << "---------------------------------------------------------\n";
 	std::cout << CYAN;
-	std::cout << "Created a workshop,\n";
-	std::cout << "adding workers to the workshop and\n";
+	std::cout << "Created a workshop, adding workers to the workshop and\n";
 	std::cout << "showing the workshop.\n";
 	std::cout << BLUE;
 	std::cout << "---------------------------------------------------------\n";
 
 	{
 		Workshop workshop = Workshop();
-		Worker worker1 = Worker(Position(42, 42, 42), Statistic(42, 42));
-		Worker worker2 = Worker(Position(88, 88, 88), Statistic(88, 88));
-		Worker worker3 = Worker(Position(1, 1, 1), Statistic(1, 1));
+		Worker *worker1 = new Worker(Position(42, 42, 42), Statistic(42, 42));
+		Worker *worker2 = new Worker(Position(88, 88, 88), Statistic(88, 88));
+		Worker *worker3 = new Worker(Position(1, 1, 1), Statistic(1, 1));
 
-		workshop.registerWorker(&worker1);
-		workshop.registerWorker(&worker3);
-		workshop.registerWorker(&worker2);
+		workshop.registerWorker(worker1);
+		workshop.registerWorker(worker3);
+		workshop.registerWorker(worker2);
 
-		std::cout << "\n***Infomations***" << workshop
-					<< "\n" << RESET << std::endl;
-	}
-
+		std::cout << "\n***Infomations***" << workshop << RESET;
 
 	std::cout << BLUE << std::endl;
+	std::cout << "---------------------------------------------------------\n";
+	std::cout << CYAN;
+	std::cout << "Trying to add already registered worker...\n";
+	std::cout << BLUE;
+	std::cout << "---------------------------------------------------------\n";
+
+		workshop.registerWorker(worker3);
+		std::cout << "\n***Infomations***" << workshop << RESET;
+
+	std::cout << BLUE << std::endl;
+	std::cout << "---------------------------------------------------------\n";
+	std::cout << CYAN;
+	std::cout << "Deleting all workers\n";
+	std::cout << BLUE;
+	std::cout << "---------------------------------------------------------\n";
+
+		delete worker1;
+		delete worker2;
+		delete worker3;
+	}
+
+	std::cout << BLUE;
 	std::cout << "---------------------------------------------------------\n";
 	std::cout << GRAY;
 	std::cout << "---------------------- END OF TEST ----------------------\n";
