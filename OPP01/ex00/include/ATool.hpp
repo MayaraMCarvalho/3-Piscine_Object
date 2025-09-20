@@ -10,10 +10,9 @@ class Worker;
 class ATool
 {
 	protected:
+	// Attributes =============================================================
 		int		_numberOfUses;
 		Worker	*_userWorker;
-
-// Attributes =============================================================
 
 	public:
 	// Constructor & Destructor ===============================================

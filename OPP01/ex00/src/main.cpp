@@ -6,10 +6,11 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:52:00 by macarval          #+#    #+#             */
-/*   Updated: 2025/09/12 21:49:33 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/19 22:15:00 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Workshop.hpp"
 #include "Worker.hpp"
 
 int main(void)
@@ -155,10 +156,25 @@ int main(void)
 	std::cout << BLUE << std::endl;
 	std::cout << "---------------------------------------------------------\n";
 	std::cout << CYAN;
-	std::cout << "Text\n";
+	std::cout << "Created a workshop,\n";
+	std::cout << "adding workers to the workshop and\n";
+	std::cout << "showing the workshop.\n";
 	std::cout << BLUE;
 	std::cout << "---------------------------------------------------------\n";
 
+	{
+		Workshop workshop = Workshop();
+		Worker worker1 = Worker(Position(42, 42, 42), Statistic(42, 42));
+		Worker worker2 = Worker(Position(88, 88, 88), Statistic(88, 88));
+		Worker worker3 = Worker(Position(1, 1, 1), Statistic(1, 1));
+
+		workshop.registerWorker(&worker1);
+		workshop.registerWorker(&worker3);
+		workshop.registerWorker(&worker2);
+
+		std::cout << "\n***Infomations***" << workshop
+					<< "\n" << RESET << std::endl;
+	}
 
 
 	std::cout << BLUE << std::endl;

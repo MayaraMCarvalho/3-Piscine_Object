@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:42 by macarval          #+#    #+#             */
-/*   Updated: 2025/09/12 21:45:06 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/19 22:11:35 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,14 @@
 # include "Shovel.hpp"
 # include "Hammer.hpp"
 
-
 class Worker
 {
 	private:
+	// Attributes =============================================================
 		Position			_coordonnee;
 		Statistic			_stat;
 		std::vector<ATool*>	_tools;
+
 	// Methods ================================================================
 		void	takenTool(ATool& tool);
 
@@ -39,6 +40,7 @@ class Worker
 	// Constructor & Destructor ===============================================
 		Worker(Position const &pos, Statistic const &stat);
 		~Worker( void );
+
 	// Exceptions =============================================================
 
 	// ========================================================================
