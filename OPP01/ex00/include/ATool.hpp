@@ -30,7 +30,8 @@ class ATool
 		Worker* getWorker( void ) const;
 
 	// Setters ================================================================
-		void attachWorker (Worker &worker);
+		void	attachWorker (Worker &worker);
+		void	detachWorker(void);
 
 	// Methods ================================================================
 		virtual void use( void ) = 0;

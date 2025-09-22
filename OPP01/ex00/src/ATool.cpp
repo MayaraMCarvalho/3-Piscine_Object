@@ -6,11 +6,12 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 21:20:07 by macarval          #+#    #+#             */
-/*   Updated: 2025/09/19 21:20:08 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/22 14:29:54 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ATool.hpp"
+#include "Worker.hpp"
 
 // Constructor & Destructor ===================================================
 ATool::ATool( void ) : _numberOfUses(0), _userWorker(NULL) {}
@@ -44,6 +45,11 @@ Worker* ATool::getWorker( void ) const
 void ATool::attachWorker(Worker &worker)
 {
 	this->_userWorker = &worker;
+}
+
+void ATool::detachWorker(void)
+{
+	this->_userWorker = NULL;
 }
 
 // Methods ====================================================================

@@ -6,11 +6,12 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:55 by macarval          #+#    #+#             */
-/*   Updated: 2025/09/12 21:33:20 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/22 14:27:58 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Worker.hpp"
+#include "Workshop.hpp"
 
 // Constructor & Destructor ===================================================
 
@@ -22,6 +23,18 @@ Worker::Worker(Position const &pos, Statistic const &stat)
 
 Worker::~Worker( void )
 {
+	for (std::vector<ATool*>::iterator it = this->_tools.begin();
+			it != this->_tools.end(); ++it)
+	{
+		(*it)->detachWorker();
+	}
+
+	for (std::vector<Workshop*>::iterator it = this->_works.begin();
+		it != this->_works.end(); ++it)
+	{
+		(*it)->removeWorker(this);
+	}
+
 	std::cout << RED << "Worker☠️  destroyed!" << RESET << std::endl;
 }
 
@@ -52,18 +65,25 @@ std::ostream& operator<<(std::ostream& p_os, const Worker& p_worker)
 }
 
 // Getters ====================================================================
-ATool* Worker::getTool(ATool* obj) const
-{
-	for (std::vector<ATool*>::const_iterator it = this->_tools.begin();
-			it != this->_tools.end(); ++it)
-	{
-		if (typeid(**it) == typeid(*obj))
-			return (*it);
-	}
-	return (NULL);
-}
 
 // Setters ====================================================================
+	void	Worker::addWork(Workshop& work)
+	{
+		this->_works.push_back(&work);
+	}
+
+	void	Worker::removeWork(Workshop *work)
+	{
+		for (std::vector<Workshop*>::iterator it = this->_works.begin();
+			it != this->_works.end(); ++it)
+		{
+			if (*it == work)
+			{
+				this->_works.erase(it);
+				return ;
+			}
+		}
+	}
 
 // Methods ====================================================================
 void	Worker::giveTool(ATool& tool)
@@ -83,6 +103,7 @@ void	Worker::giveTool(ATool& tool)
 
 void	Worker::takenTool(ATool& tool)
 {
+
 	for (std::vector<ATool*>::iterator it = this->_tools.begin();
 			it != this->_tools.end(); ++it)
 	{
@@ -97,4 +118,11 @@ void	Worker::takenTool(ATool& tool)
 	}
 }
 
+void	Worker::work(void)
+{
+	if (!this->_works.empty())
+		std::cout << BYELLOW << "Working...☀️" << RESET << std::endl;
+	else
+		std::cout << RED << "Worker does not belong to any workshop" << RESET << std::endl;
+}
 // Exceptions =================================================================

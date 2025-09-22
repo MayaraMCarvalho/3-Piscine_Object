@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:55 by macarval          #+#    #+#             */
-/*   Updated: 2025/09/12 21:27:31 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/22 14:14:19 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ Shovel::Shovel( void ) : ATool(0, NULL)
 
 Shovel::~Shovel( void )
 {
+	// if (_userWorker)
+	// 	_userWorker->takenTool(*this);
 	std::cout << RED << "Shovel🛠️  destroyed!" << RESET << std::endl;
 }
 

@@ -6,12 +6,14 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:52:00 by macarval          #+#    #+#             */
-/*   Updated: 2025/09/20 11:24:41 by macarval         ###   ########.fr       */
+/*   Updated: 2025/09/22 16:02:03 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Workshop.hpp"
 #include "Worker.hpp"
+# include "Shovel.hpp"
+# include "Hammer.hpp"
 
 int main(void)
 {
@@ -23,11 +25,11 @@ int main(void)
 	std::cout << "---------------------------------------------------------\n";
 
 	std::cout << CYAN;
-	std::cout << "Instance a Position..." << std::endl;
-	std::cout << "Instance a Statistic..." << std::endl;
+	std::cout << "Instance a Position...\n";
+	std::cout << "Instance a Statistic...\n";
 	std::cout << "Creating a worker using the created Position and\n";
 	std::cout << "Statistic...\n";
-	std::cout << "Printing worker information..." << std::endl;
+	std::cout << "Printing worker information...\n";
 	std::cout << BLUE;
 	std::cout << "---------------------------------------------------------\n";
 
@@ -159,8 +161,8 @@ int main(void)
 	std::cout << BLUE << std::endl;
 	std::cout << "---------------------------------------------------------\n";
 	std::cout << CYAN;
-	std::cout << "Created a workshop, adding workers to the workshop and\n";
-	std::cout << "showing the workshop.\n";
+	std::cout << "Created a workshop, adding workers to the workshop...\n";
+	std::cout << "Showing the workshop.\n";
 	std::cout << BLUE;
 	std::cout << "---------------------------------------------------------\n";
 
@@ -170,9 +172,9 @@ int main(void)
 		Worker *worker2 = new Worker(Position(88, 88, 88), Statistic(88, 88));
 		Worker *worker3 = new Worker(Position(1, 1, 1), Statistic(1, 1));
 
-		workshop.registerWorker(worker1);
-		workshop.registerWorker(worker3);
-		workshop.registerWorker(worker2);
+		workshop.hireWorker(*worker1);
+		workshop.hireWorker(*worker3);
+		workshop.hireWorker(*worker2);
 
 		std::cout << "\n***Infomations***" << workshop << RESET;
 
@@ -180,11 +182,56 @@ int main(void)
 	std::cout << "---------------------------------------------------------\n";
 	std::cout << CYAN;
 	std::cout << "Trying to add already registered worker...\n";
+	std::cout << "Showing the workshop.\n";
 	std::cout << BLUE;
 	std::cout << "---------------------------------------------------------\n";
 
-		workshop.registerWorker(worker3);
+		workshop.hireWorker(*worker3);
 		std::cout << "\n***Infomations***" << workshop << RESET;
+
+	std::cout << BLUE << std::endl;
+	std::cout << "---------------------------------------------------------\n";
+	std::cout << CYAN;
+	std::cout << "Firing a worker...\n";
+	std::cout << "Showing the workshop.\n";
+	std::cout << BLUE;
+	std::cout << "---------------------------------------------------------\n";
+
+		workshop.fireWorker(worker1);
+		std::cout << "\n***Infomations***" << workshop << RESET;
+
+	std::cout << BLUE << std::endl;
+	std::cout << "---------------------------------------------------------\n";
+	std::cout << CYAN;
+	std::cout << "Created a new workshop, adding workers to the workshop...\n";
+	std::cout << "Showing the workshop.\n";
+	std::cout << BLUE;
+	std::cout << "---------------------------------------------------------\n";
+
+		Workshop office = Workshop();
+
+		office.hireWorker(*worker2);
+		office.hireWorker(*worker1);
+		office.hireWorker(*worker3);
+
+		std::cout << "\n***Infomations***" << office << RESET;
+
+	std::cout << BLUE << std::endl;
+	std::cout << "---------------------------------------------------------\n";
+	std::cout << CYAN;
+	std::cout << "Starting a workday\n";
+	std::cout << BLUE;
+	std::cout << "---------------------------------------------------------\n";
+
+		Worker *worker4 = new Worker(Position(0, 0, 0), Statistic(0, 0));
+
+		worker4->work();
+		office.hireWorker(*worker4);
+		worker4->work();
+
+		std::cout << "\n***Infomations***" << office << RESET << std::endl;
+		office.executeWorkDay();
+
 
 	std::cout << BLUE << std::endl;
 	std::cout << "---------------------------------------------------------\n";
@@ -196,6 +243,57 @@ int main(void)
 		delete worker1;
 		delete worker2;
 		delete worker3;
+		delete worker4;
+	}
+
+	std::cout << BLUE;
+	std::cout << "---------------------------------------------------------\n";
+	std::cout << GRAY;
+	std::cout << "---------------------- BONUS TESTS ----------------------\n";
+	std::cout << BLUE;
+	std::cout << "---------------------------------------------------------\n";
+	std::cout << CYAN;
+	std::cout << "Obtain tool from a worker\n";
+	std::cout << BLUE;
+	std::cout << "---------------------------------------------------------\n";
+
+	{
+		Worker *worker = new Worker(Position(25, 10, 50), Statistic(15, 45));
+		Hammer hammer = Hammer();
+
+		std::cout << std::endl;
+		worker->giveTool(hammer);
+
+		std::cout << std::endl;
+		Hammer *hammer2 = worker->getTool<Hammer>();
+		Shovel *shovel2 = worker->getTool<Shovel>();
+
+		std::cout << std::endl;
+
+		if (hammer2)
+			hammer2->use();
+
+		if (shovel2)
+			shovel2->use();
+
+		std::cout << BLUE << std::endl;
+		std::cout << "---------------------------------------------------------\n";
+		std::cout << CYAN;
+		std::cout << "Hiring a expert\n";
+		std::cout << BLUE;
+		std::cout << "---------------------------------------------------------\n";
+
+		Workshop contractor = Workshop();
+
+		contractor.hireExpert<Shovel>(worker);
+		contractor.hireExpert<Hammer>(worker);
+		std::cout << std::endl;
+
+		contractor.executeWorkDay();
+
+		std::cout << std::endl;
+
+		delete worker;
 	}
 
 	std::cout << BLUE;
