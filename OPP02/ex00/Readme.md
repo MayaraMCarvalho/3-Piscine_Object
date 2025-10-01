@@ -1,6 +1,6 @@
 # README — PISCINE OBJECT · Module 02 — UML
 
-**Autor:** macarval
+**Autor:** **~macarval~**
 **Diretório:** `ex00/`
 **Arquivo principal:** `ex00/subject.png`
 
